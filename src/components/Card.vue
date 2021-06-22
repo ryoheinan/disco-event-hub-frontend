@@ -1,6 +1,5 @@
 <template>
-  <div class="card rounded-lg">
-    <!-- :style="colorStyle -->
+  <div class="card rounded-lg" :style="colorObj">
     <div class="pb-10">
       <div class="flex justify-center py-4 px-8">
         <div class="pt-3 bg-white text-4xl w-14 h-14 rounded-lg">
@@ -16,13 +15,15 @@
 </template>
 
 <script lang="ts">
-  import { ref, defineComponent } from 'vue'
+  import { reactive, defineComponent, PropType } from 'vue'
   export default defineComponent({
     name: 'Card',
     props: {
       color: {
         //背景色と文字色の組み合わせをobjectで指定する
-        type: String,
+        type: String as PropType<
+          'blurple' | 'green' | 'yellow' | 'fuchsia' | 'red'
+        >,
         required: true,
       },
       emoji: {
@@ -41,16 +42,21 @@
         default: 'title',
       },
     },
-    setup: () => {
-      const count = ref(0)
-      return { count }
+    setup: (props) => {
+      const colorSet = {
+        blurple: { bg: '#5865F2', text: '#ffffff' },
+        green: { bg: '#57F287', text: '#1A1A1A' },
+        yellow: { bg: '#FEE75C', text: '#1A1A1A' },
+        fuchsia: { bg: '#EB459E', text: '#ffffff' },
+        red: { bg: '#ED4245', text: '#ffffff' },
+      }
+      const colorObj = reactive({
+        backgroundColor: colorSet[props.color].bg,
+        color: colorSet[props.color].text,
+      })
+      return { colorObj }
     },
   })
 </script>
 
-<style scoped>
-  .card {
-    background-color: #5865f2;
-    color: #1a1a1a;
-  }
-</style>
+<style scoped></style>
