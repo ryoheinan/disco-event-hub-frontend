@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded-lg" :style="colorObj">
+  <div class="card text-center rounded-lg" :style="colorObj">
     <div class="pb-10">
       <div class="flex justify-center py-4 px-8">
         <div class="pt-3 bg-white text-4xl w-14 h-14 rounded-lg">
