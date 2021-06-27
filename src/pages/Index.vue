@@ -1,6 +1,8 @@
 <template>
   <Header />
-  <Events />
+  <main class="content-bg">
+    <Events />
+  </main>
 </template>
 
 <script lang="ts">
