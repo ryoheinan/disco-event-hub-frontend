@@ -2,15 +2,13 @@
   <Header />
   <main class="content-bg">
     <div class="container mx-auto px-5">
-      <div class="card rounded-lg" :style="colorObj">
+      <div class="card text-center rounded-lg p-5" :style="colorObj">
         <div class="pb-10">
-          <div class="flex justify-center py-4 px-8">
-            <div class="pt-3 bg-white text-6xl w-20 h-20 rounded-lg">
-              {{ emoji }}
-            </div>
+          <div class="flex justify-center mb-5">
+            <div class="emoji bg-white w-40 h-40 rounded-lg">👩‍💻</div>
           </div>
           <div class="flex flex-col">
-            <div class="text-4xl font-bold pb-1">{{ title }}</div>
+            <div class="text-5xl font-bold pb-1">Hello</div>
             <div class="text-2xl pb-3">@{{ serverName }}</div>
           </div>
         </div>
@@ -44,4 +42,8 @@
   })
 </script>
 
-<style scoped></style>
+<style scoped>
+  .emoji {
+    font-size: 6rem;
+  }
+</style>
