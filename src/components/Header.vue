@@ -2,7 +2,9 @@
   <header>
     <div class="container mx-auto pt-4 pb-16 px-5">
       <div class="flex justify-between items-center">
-        <img src="../assets/img/logo.svg" class="logo" />
+        <router-link to="/">
+          <img src="../assets/img/logo.svg" class="logo" />
+        </router-link>
         <img src="../assets/img/menu.svg" class="menu" />
       </div>
     </div>
