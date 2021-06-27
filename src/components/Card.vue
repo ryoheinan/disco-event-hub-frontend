@@ -2,13 +2,13 @@
   <div class="card text-center rounded-lg" :style="colorObj">
     <div class="pb-10">
       <div class="flex justify-center py-4 px-8">
-        <div class="pt-3 bg-white text-4xl w-14 h-14 rounded-lg">
+        <div class="pt-3 bg-white text-6xl w-20 h-20 rounded-lg">
           {{ emoji }}
         </div>
       </div>
       <div class="flex flex-col">
-        <div class="text-2xl font-bold">{{ title }}</div>
-        <div class="text-1xl font-bold pb-3">@{{ serverName }}</div>
+        <div class="text-4xl font-bold pb-1">{{ title }}</div>
+        <div class="text-2xl pb-3">@{{ serverName }}</div>
       </div>
     </div>
   </div>
@@ -59,4 +59,8 @@
   })
 </script>
 
-<style scoped></style>
+<style scoped>
+  .card {
+    height: 20rem;
+  }
+</style>

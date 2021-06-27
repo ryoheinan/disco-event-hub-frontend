@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.content-bg {
+  background-color: #eaeaea;
+  background: linear-gradient(
+    180deg,
+    #eaeaea 0%,
+    #eaeaea 5rem,
+    #2c2e31 5rem,
+    #2c2e31 100%
+  );
+  margin-bottom: 10rem;
+}

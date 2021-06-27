@@ -1,9 +1,16 @@
 <template>
-  <div class="cards">
+  <main class="content-bg">
     <div class="container mx-auto px-5">
-      <Card color="blurple" emoji="😎" title="Hello" server-name="Hello" />
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 gap-x-20 gap-y-16 lg:gap-y-12"
+      >
+        <Card color="blurple" emoji="😎" title="Hello" server-name="Hello" />
+        <Card color="fuchsia" emoji="🎬" title="Hello" server-name="Hello" />
+        <Card color="green" emoji="🎮" title="Hello" server-name="Hello" />
+        <Card color="green" emoji="👩‍💻" title="Hello" server-name="Hello" />
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -16,17 +23,3 @@
     },
   })
 </script>
-
-<style scoped>
-  .cards {
-    background-color: #eaeaea;
-    background: linear-gradient(
-      180deg,
-      #eaeaea 0%,
-      #eaeaea 5rem,
-      #2c2e31 5rem,
-      #2c2e31 100%
-    );
-    height: 10rem;
-  }
-</style>
