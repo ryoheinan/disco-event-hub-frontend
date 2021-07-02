@@ -5,7 +5,7 @@
         <router-link to="/">
           <img src="../assets/img/logo.svg" class="logo" />
         </router-link>
-        <login-btn />
+        <login-btn v-if="isLoginBtn" />
       </div>
     </div>
   </header>
@@ -18,6 +18,13 @@
     name: 'Header',
     components: {
       LoginBtn,
+    },
+    props: {
+      isLoginBtn: {
+        type: Boolean,
+        default: true,
+        required: false,
+      },
     },
   })
 </script>
