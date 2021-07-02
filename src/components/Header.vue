@@ -5,7 +5,7 @@
         <router-link to="/">
           <img src="../assets/img/logo.svg" class="logo" />
         </router-link>
-        <img src="../assets/img/menu.svg" class="menu" />
+        <login-btn />
       </div>
     </div>
   </header>
@@ -13,8 +13,12 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import LoginBtn from './LoginBtn.vue'
   export default defineComponent({
     name: 'Header',
+    components: {
+      LoginBtn,
+    },
   })
 </script>
 
