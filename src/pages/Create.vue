@@ -2,8 +2,23 @@
   <Header :is-login-btn="state.isLoggedin" />
   <main class="content-bg">
     <div class="container mx-auto px-5">
-      <div v-if="state.isLoggedin" class="card rounded-lg p-5">
+      <div
+        v-if="!$route.query.invite || !$route.query.guild"
+        class="text-center"
+      >
+        <h1 class="text-6xl font-bold mb-10">Invalid URL</h1>
+        <p class="text-white">無効なURLです</p>
+      </div>
+      <div v-else-if="state.isLoggedin" class="card rounded-lg p-5">
         <div class="container mx-auto">
+          <p class="text-lg font-bold">Discordサーバー名</p>
+          <p class="text-base mb-5">
+            {{ $route.query.guild }}
+          </p>
+          <p class="text-lg font-bold">Discordサーバーの招待リンク</p>
+          <p class="text-base mb-5">
+            https://discord.gg/{{ $route.query.invite }}
+          </p>
           <label class="block mb-5">
             <span>イベント名</span>
             <input
@@ -13,40 +28,68 @@
                 block
                 w-full
                 rounded-md
-                border-transparent
-                focus:bg-white focus:ring-0
+                border-2 border-transparent
+                focus:border-black
               "
               placeholder="例）ゲームやる会"
             />
           </label>
           <label class="block mb-5">
-            <span>Discordサーバー名</span>
-            <input
-              type="text"
-              class="mt-1 block w-full rounded-md border-transparent"
-              placeholder="例）ゲーム同好会"
-            />
+            <span>イベントの説明</span>
+            <textarea
+              class="
+                mt-1
+                block
+                w-full
+                rounded-md
+                border-2 border-transparent
+                focus:border-black
+              "
+              placeholder="例）ゲームやる会"
+            >
+            </textarea>
           </label>
           <label class="block mb-5">
-            <span>Discordサーバーの招待コード</span>
+            <span>絵文字</span>
             <input
-              type="url"
-              class="mt-1 block w-full rounded-md border-transparent"
-              placeholder="例）https://discord.gg/xxxyyyzzz"
+              type="text"
+              class="
+                mt-1
+                block
+                w-full
+                rounded-md
+                border-2 border-transparent
+                focus:border-black
+              "
+              placeholder="例）ゲームやる会"
             />
           </label>
           <label class="block mb-5">
             <span>イベント開始日</span>
             <input
               type="date"
-              class="mt-1 block w-full rounded-md border-transparent"
+              class="
+                mt-1
+                block
+                w-full
+                rounded-md
+                border-2 border-transparent
+                focus:border-black
+              "
             />
           </label>
           <label class="block mb-5">
             <span>イベント開始時間</span>
             <input
               type="time"
-              class="mt-1 block w-full rounded-md border-transparent"
+              class="
+                mt-1
+                block
+                w-full
+                rounded-md
+                border-2 border-transparent
+                focus:border-black
+              "
             />
           </label>
         </div>
