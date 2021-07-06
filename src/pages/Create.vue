@@ -19,6 +19,23 @@
           <p class="text-base mb-5">
             https://discord.gg/{{ $route.query.invite }}
           </p>
+          <div class="mb-5">
+            <button
+              class="bg-white text-6xl flex items-center p-5 rounded-lg"
+              @click="toggleVisible"
+            >
+              {{ emojiOutput }}
+              <span class="text-2xl ml-2 text-gray-700">絵文字の変更</span>
+            </button>
+            <div v-if="isVisible" class="ml-0 mt-2">
+              <Picker
+                :data="emojiIndex"
+                :native="true"
+                title=""
+                @select="showEmoji"
+              />
+            </div>
+          </div>
           <label class="block mb-5">
             <span>イベント名</span>
             <input
@@ -46,23 +63,7 @@
                 focus:border-black
               "
               placeholder="例）ゲームやる会"
-            >
-            </textarea>
-          </label>
-          <label class="block mb-5">
-            <span>絵文字</span>
-            <input
-              type="text"
-              class="
-                mt-1
-                block
-                w-full
-                rounded-md
-                border-2 border-transparent
-                focus:border-black
-              "
-              placeholder="例）ゲームやる会"
-            />
+            ></textarea>
           </label>
           <label class="block mb-5">
             <span>イベント開始日</span>
@@ -109,20 +110,50 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent, ref } from 'vue'
   import { useAuthStore } from '../stores/auth'
-
+  import data from 'emoji-mart-vue-fast/data/all.json'
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  import { Picker, EmojiIndex } from 'emoji-mart-vue-fast/src'
+  import 'emoji-mart-vue-fast/css/emoji-mart.css'
   import Header from '../components/Header.vue'
+
+  interface EmojiData {
+    id: string
+    name: string
+    colons: string
+    emoticons: string[]
+    unified: string
+    skin: number
+    native: string
+  }
+
+  const emojiIndex = new EmojiIndex(data)
   export default defineComponent({
     name: 'Create',
     components: {
       Header,
+      Picker,
     },
     setup: () => {
       const { signin, state } = useAuthStore()
+      const emojiOutput = ref('😀') //リアクティブにする
+      const isVisible = ref(false)
+      const showEmoji = (emoji: EmojiData) => {
+        emojiOutput.value = emoji.native
+      }
+      const toggleVisible = () => {
+        isVisible.value = !isVisible.value
+      }
       return {
         signin,
         state,
+        emojiIndex,
+        showEmoji,
+        emojiOutput,
+        isVisible,
+        toggleVisible,
       }
     },
   })
@@ -132,8 +163,12 @@
   .emoji {
     font-size: 6rem;
   }
-  input {
+  input,
+  textarea {
     color: #1a1a1a;
+  }
+  textarea {
+    min-height: 6rem;
   }
   .card {
     background-color: #5865f2;
