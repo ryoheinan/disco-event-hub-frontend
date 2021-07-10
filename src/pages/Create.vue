@@ -50,6 +50,7 @@
                 focus:border-black
               "
               placeholder="例）ゲームやる会"
+              default
             />
           </label>
           <label class="block mb-5">
@@ -65,6 +66,7 @@
                 focus:border-black
               "
               placeholder="例）ゲームやる会"
+              default
             ></textarea>
           </label>
           <label class="block mb-5">
@@ -80,6 +82,7 @@
                 border-2 border-transparent
                 focus:border-black
               "
+              default
             />
           </label>
           <label class="block mb-5">
@@ -95,6 +98,7 @@
                 border-2 border-transparent
                 focus:border-black
               "
+              default
             />
           </label>
           <button
