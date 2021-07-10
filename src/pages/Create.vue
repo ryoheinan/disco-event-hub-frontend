@@ -39,6 +39,7 @@
           <label class="block mb-5">
             <span>イベント名</span>
             <input
+              v-model="formData.name"
               type="text"
               class="
                 mt-1
@@ -54,6 +55,7 @@
           <label class="block mb-5">
             <span>イベントの説明</span>
             <textarea
+              v-model="formData.description"
               class="
                 mt-1
                 block
@@ -68,6 +70,7 @@
           <label class="block mb-5">
             <span>イベント開始日</span>
             <input
+              v-model="formData.startDate"
               type="date"
               class="
                 mt-1
@@ -82,6 +85,7 @@
           <label class="block mb-5">
             <span>イベント開始時間</span>
             <input
+              v-model="formData.startTime"
               type="time"
               class="
                 mt-1
@@ -93,6 +97,13 @@
               "
             />
           </label>
+          <button
+            type="button"
+            class="py-2 px-4 font-semibold rounded-lg focus:outline-none"
+            @click="addData()"
+          >
+            Create
+          </button>
         </div>
       </div>
       <div v-else class="text-center">
@@ -110,7 +121,10 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue'
+  import { defineComponent, ref, reactive } from 'vue'
+  import { useRoute, useRouter } from 'vue-router'
+  import firebase from 'firebase/app'
+  import 'firebase/firestore'
   import { useAuthStore } from '../stores/auth'
   import data from 'emoji-mart-vue-fast/data/all.json'
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -129,6 +143,13 @@
     native: string
   }
 
+  interface Form {
+    name: string
+    description: string
+    startDate: string
+    startTime: string
+  }
+
   const emojiIndex = new EmojiIndex(data)
   export default defineComponent({
     name: 'Create',
@@ -137,8 +158,10 @@
       Picker,
     },
     setup: () => {
+      const router = useRouter()
+      const route = useRoute()
       const { signin, state } = useAuthStore()
-      const emojiOutput = ref('😀') //リアクティブにする
+      const emojiOutput = ref('😀')
       const isVisible = ref(false)
       const showEmoji = (emoji: EmojiData) => {
         emojiOutput.value = emoji.native
@@ -146,6 +169,34 @@
       const toggleVisible = () => {
         isVisible.value = !isVisible.value
       }
+      const formData = reactive<Form>({
+        name: '',
+        description: '',
+        startDate: '',
+        startTime: '',
+      })
+      const db = firebase.firestore()
+      const addData = () => {
+        db.collection('events')
+          .add({
+            serverName: route.query.guild,
+            inviteUrl: route.query.invite,
+            name: formData.name,
+            description: formData.description,
+            emoji: emojiOutput.value,
+            startDate: formData.startDate,
+            startTime: formData.startTime,
+            timestamp: firebase.firestore.Timestamp.now(),
+          })
+          .then(() => {
+            alert('作成完了！')
+            router.push('/') //detailに移動予定
+          })
+          .catch(() => {
+            alert('保存に失敗しました')
+          })
+      }
+
       return {
         signin,
         state,
@@ -154,6 +205,8 @@
         emojiOutput,
         isVisible,
         toggleVisible,
+        addData,
+        formData,
       }
     },
   })
