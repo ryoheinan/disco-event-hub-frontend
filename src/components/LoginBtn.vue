@@ -2,7 +2,7 @@
   <div v-if="state.isLoggedin">
     <button
       type="button"
-      class="py-2 px-4 text-white font-semibold rounded-lg focus:outline-none"
+      class="py-2 px-4 font-semibold rounded-lg focus:outline-none"
       @click="signout()"
     >
       Sign out
@@ -11,7 +11,7 @@
   <div v-else class="user">
     <button
       type="button"
-      class="py-2 px-4 text-white font-semibold rounded-lg focus:outline-none"
+      class="py-2 px-4 font-semibold rounded-lg focus:outline-none"
       @click="signin()"
     >
       Sign in
@@ -38,9 +38,10 @@
 
 <style scoped>
   button {
-    background-color: #5865f2;
+    border: solid 2px #5865f2;
   }
   button:active {
-    background-color: #454fbe;
+    background-color: #5865f2;
+    color: #fff;
   }
 </style>
