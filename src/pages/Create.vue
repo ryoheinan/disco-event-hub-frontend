@@ -69,6 +69,74 @@
               default
             ></textarea>
           </label>
+          <div class="mb-5">
+            <p>テーマカラー</p>
+            <input
+              id="blurple"
+              v-model="formData.color"
+              type="radio"
+              name="color"
+              class="hidden"
+              value="blurple"
+            />
+            <label for="blurple" class="inline-block color-box blurple-box"
+              ><div class="flex items-center">
+                <span class="circle mr-2"></span> Blurple
+              </div></label
+            >
+            <input
+              id="green"
+              v-model="formData.color"
+              type="radio"
+              name="color"
+              class="hidden"
+              value="green"
+            />
+            <label for="green" class="inline-block color-box green-box"
+              ><div class="flex items-center">
+                <span class="circle mr-2"></span> Green
+              </div></label
+            >
+            <input
+              id="yellow"
+              v-model="formData.color"
+              type="radio"
+              name="color"
+              class="hidden"
+              value="yellow"
+            />
+            <label for="yellow" class="inline-block color-box yellow-box"
+              ><div class="flex items-center">
+                <span class="circle mr-2"></span> Yellow
+              </div></label
+            >
+            <input
+              id="fuchsia"
+              v-model="formData.color"
+              type="radio"
+              name="color"
+              class="hidden"
+              value="fuchsia"
+            />
+            <label for="fuchsia" class="inline-block color-box fuchsia-box"
+              ><div class="flex items-center">
+                <span class="circle mr-2"></span> Fuchsia
+              </div></label
+            >
+            <input
+              id="red"
+              v-model="formData.color"
+              type="radio"
+              name="color"
+              class="hidden"
+              value="red"
+            />
+            <label for="red" class="inline-block color-box red-box"
+              ><div class="flex items-center">
+                <span class="circle mr-2"></span> Red
+              </div></label
+            >
+          </div>
           <label class="block mb-5">
             <span>イベント開始日</span>
             <input
@@ -150,6 +218,7 @@
   interface Form {
     name: string
     description: string
+    color: 'blurple' | 'green' | 'yellow' | 'fuchsia' | 'red'
     startDate: string
     startTime: string
   }
@@ -176,6 +245,7 @@
       const formData = reactive<Form>({
         name: '',
         description: '',
+        color: 'blurple',
         startDate: '',
         startTime: '',
       })
@@ -237,5 +307,44 @@
   }
   button:active {
     background-color: #cecece;
+  }
+  .color-box {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    margin: 0.5rem 1rem 0.5rem 0;
+    padding: 1.25rem;
+    font-weight: 700;
+    border: solid 3px #ffffff;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    min-width: 6rem;
+  }
+  #blurple:checked ~ .blurple-box,
+  #green:checked ~ .green-box,
+  #yellow:checked ~ .yellow-box,
+  #fuchsia:checked ~ .fuchsia-box,
+  #red:checked ~ .red-box {
+    border: solid 3px #1a1a1a;
+  }
+  .circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  .blurple-box .circle {
+    background-color: #5865f2;
+  }
+  .green-box .circle {
+    background-color: #57f287;
+  }
+  .yellow-box .circle {
+    background-color: #fee75c;
+  }
+  .fuchsia-box .circle {
+    background-color: #eb459e;
+  }
+  .red-box .circle {
+    background-color: #ed4245;
   }
 </style>
