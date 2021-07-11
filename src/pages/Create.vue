@@ -9,7 +9,14 @@
         <h1 class="text-6xl font-bold mb-10">Invalid URL</h1>
         <p class="text-white">無効なURLです</p>
       </div>
-      <div v-else-if="state.isLoggedin" class="card rounded-lg p-5">
+      <div
+        v-else-if="state.isLoggedin"
+        class="card rounded-lg p-5"
+        :style="{
+          backgroundColor: colorSet[formData.color].bg,
+          color: colorSet[formData.color].text,
+        }"
+      >
         <div class="container mx-auto">
           <p class="text-lg font-bold">Discordサーバー名</p>
           <p class="text-base mb-5">
@@ -249,6 +256,13 @@
         startDate: '',
         startTime: '',
       })
+      const colorSet = {
+        blurple: { bg: '#5865F2', text: '#ffffff' },
+        green: { bg: '#57F287', text: '#1A1A1A' },
+        yellow: { bg: '#FEE75C', text: '#1A1A1A' },
+        fuchsia: { bg: '#EB459E', text: '#ffffff' },
+        red: { bg: '#ED4245', text: '#ffffff' },
+      }
       const db = firebase.firestore()
       const addData = () => {
         db.collection('events')
@@ -281,6 +295,7 @@
         toggleVisible,
         addData,
         formData,
+        colorSet,
       }
     },
   })
@@ -296,10 +311,6 @@
   }
   textarea {
     min-height: 6rem;
-  }
-  .card {
-    background-color: #5865f2;
-    color: #ffffff;
   }
   button {
     background-color: #ffffff;

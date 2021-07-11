@@ -1,5 +1,11 @@
 <template>
-  <div class="card text-center rounded-lg" :style="colorObj">
+  <div
+    class="card text-center rounded-lg"
+    :style="{
+      backgroundColor: colorSet[color].bg,
+      color: colorSet[color].text,
+    }"
+  >
     <div class="pb-10">
       <div class="flex justify-center py-4 px-8">
         <div class="pt-3 bg-white text-6xl w-20 h-20 rounded-lg">
@@ -15,7 +21,7 @@
 </template>
 
 <script lang="ts">
-  import { reactive, defineComponent, PropType } from 'vue'
+  import { defineComponent, PropType } from 'vue'
   export default defineComponent({
     name: 'Card',
     props: {
@@ -42,7 +48,7 @@
         default: 'title',
       },
     },
-    setup: (props) => {
+    setup: () => {
       const colorSet = {
         blurple: { bg: '#5865F2', text: '#ffffff' },
         green: { bg: '#57F287', text: '#1A1A1A' },
@@ -50,11 +56,7 @@
         fuchsia: { bg: '#EB459E', text: '#ffffff' },
         red: { bg: '#ED4245', text: '#ffffff' },
       }
-      const colorObj = reactive({
-        backgroundColor: colorSet[props.color].bg,
-        color: colorSet[props.color].text,
-      })
-      return { colorObj }
+      return { colorSet }
     },
   })
 </script>
