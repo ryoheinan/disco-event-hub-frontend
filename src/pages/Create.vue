@@ -178,7 +178,14 @@
           </label>
           <button
             type="button"
-            class="py-2 px-4 font-semibold rounded-lg focus:outline-none"
+            class="
+              py-2
+              px-4
+              font-semibold
+              rounded-lg
+              focus:outline-none
+              btn-create
+            "
             @click="addData()"
           >
             Create
@@ -272,6 +279,7 @@
             name: formData.name,
             description: formData.description,
             emoji: emojiOutput.value,
+            color: formData.color,
             startDate: formData.startDate,
             startTime: formData.startTime,
             timestamp: firebase.firestore.Timestamp.now(),
@@ -357,5 +365,8 @@
   }
   .red-box .circle {
     background-color: #ed4245;
+  }
+  .btn-create {
+    border: solid 2px #1a1a1a;
   }
 </style>
