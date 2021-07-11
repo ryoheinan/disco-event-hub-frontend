@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <Header :is-howto="false" />
   <main class="content-bg">
     <div class="container mx-auto px-5">
       <div class="text-center">

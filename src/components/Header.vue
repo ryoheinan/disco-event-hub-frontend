@@ -7,6 +7,9 @@
         </router-link>
         <login-btn v-if="isLoginBtn" />
       </div>
+      <div v-if="isHowto" class="text-right">
+        <router-link to="/howto" class="underline">初めての方へ</router-link>
+      </div>
     </div>
   </header>
 </template>
@@ -21,6 +24,11 @@
     },
     props: {
       isLoginBtn: {
+        type: Boolean,
+        default: true,
+        required: false,
+      },
+      isHowto: {
         type: Boolean,
         default: true,
         required: false,
