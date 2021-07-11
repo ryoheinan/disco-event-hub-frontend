@@ -8,6 +8,7 @@
         <Card
           v-for="item in state.data"
           :key="item.id"
+          :url="`/detail/${item.id}`"
           :color="item.color"
           :emoji="item.emoji"
           :title="item.eventName"
@@ -72,4 +73,11 @@
   })
 </script>
 
-<style scoped></style>
+<style scoped>
+  .card {
+    transition: ease-in-out 0.25s;
+  }
+  .card:hover {
+    transform: translate(0, -7px);
+  }
+</style>

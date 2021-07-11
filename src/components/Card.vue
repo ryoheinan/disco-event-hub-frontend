@@ -6,7 +6,7 @@
       color: colorSet[color].text,
     }"
   >
-    <div class="pb-10">
+    <div class="">
       <div class="flex justify-center py-4 px-8">
         <div class="pt-3 bg-white text-6xl w-20 h-20 rounded-lg">
           {{ emoji }}
@@ -14,7 +14,12 @@
       </div>
       <div class="flex flex-col">
         <div class="text-4xl font-bold pb-1">{{ title }}</div>
-        <div class="text-2xl pb-3">@{{ serverName }}</div>
+        <div class="text-2xl mb-10">@{{ serverName }}</div>
+        <div class="mb-5">
+          <router-link :to="url" class="text-xl underline"
+            >詳しく見る</router-link
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -25,8 +30,11 @@
   export default defineComponent({
     name: 'Card',
     props: {
+      url: {
+        type: String,
+        required: true,
+      },
       color: {
-        //背景色と文字色の組み合わせをobjectで指定する
         type: String as PropType<
           'blurple' | 'green' | 'yellow' | 'fuchsia' | 'red'
         >,
@@ -60,9 +68,3 @@
     },
   })
 </script>
-
-<style scoped>
-  .card {
-    height: 20rem;
-  }
-</style>
