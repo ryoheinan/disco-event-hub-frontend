@@ -177,7 +177,7 @@
             />
           </label>
           <button
-            type="button"
+            type="submit"
             class="
               mt-10
               py-2
@@ -285,9 +285,9 @@
             startTime: formData.startTime,
             timestamp: firebase.firestore.Timestamp.now(),
           })
-          .then(() => {
+          .then((data) => {
             alert('作成完了！')
-            router.push('/') //detailに移動予定
+            router.push(`/detail/${data.id}`)
           })
           .catch(() => {
             alert('保存に失敗しました')
