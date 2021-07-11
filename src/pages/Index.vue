@@ -8,7 +8,7 @@
         <Card
           v-for="item in state.data"
           :key="item.id"
-          color="blurple"
+          :color="item.color"
           :emoji="item.emoji"
           :title="item.eventName"
           :server-name="item.serverName"
@@ -50,6 +50,7 @@
                 eventName: data.name,
                 serverName: data.serverName,
                 emoji: data.emoji,
+                color: data.color,
               })
             })
             return recvData
