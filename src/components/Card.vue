@@ -16,7 +16,9 @@
         <div class="text-4xl font-bold pb-1">{{ title }}</div>
         <div class="text-2xl mb-10">@{{ serverName }}</div>
         <div class="mb-5">
-          <router-link :to="url" class="text-xl underline"
+          <router-link
+            :to="url"
+            class="inline-block btn-link py-2 px-4 font-semibold rounded-lg"
             >詳しく見る</router-link
           >
         </div>
@@ -68,3 +70,14 @@
     },
   })
 </script>
+
+<style scoped>
+  .btn-link {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  .btn-link:hover,
+  .btn-link:active {
+    background-color: #3a3a3a;
+  }
+</style>

@@ -78,6 +78,6 @@
     transition: ease-in-out 0.25s;
   }
   .card:hover {
-    transform: translate(0, -7px);
+    transform: scale(1.025, 1.025);
   }
 </style>
