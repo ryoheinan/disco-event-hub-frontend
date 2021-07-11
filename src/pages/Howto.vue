@@ -3,16 +3,18 @@
   <main class="content-bg">
     <div class="container mx-auto px-5">
       <div class="text-center">
-        <h1 class="text-6xl font-bold mb-10">初めての方へ</h1>
+        <h1 class="text-4xl md:text-6xl font-bold mb-14 md:mb-10">
+          初めての方へ
+        </h1>
         <section class="text-white mb-10">
-          <h2 class="text-3xl mb-2">このサイトについて</h2>
+          <h2 class="text-2xl mb-2">このサイトについて</h2>
           <p>
             Disco Event Hubは、サークルなどのDiscord上で行われるイベントを<br />
             外部にSNSなどで共有することができるサイトです。
           </p>
         </section>
         <section class="text-white mb-10">
-          <h2 class="text-3xl mb-2">使い方</h2>
+          <h2 class="text-2xl mb-2">使い方</h2>
           <p class="mb-5">
             まずは、Disco Event Botをあなたの
             Discordサーバーに追加してください。<br />
