@@ -31,7 +31,7 @@
             target="_blank"
             >Disco Event Botの追加</a
           >
-          <p class="mt-10 mb-5">
+          <p class="mt-8 mb-5">
             イベントを開催したいサーバー上で「/event」と打つと、<br />
             作成画面へのリンクが表示され、サイト上で作成することができます。
           </p>
