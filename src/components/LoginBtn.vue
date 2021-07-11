@@ -40,6 +40,7 @@
   button {
     border: solid 2px #5865f2;
   }
+  button:hover,
   button:active {
     background-color: #5865f2;
     color: #fff;
