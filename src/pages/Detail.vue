@@ -22,7 +22,9 @@
             <p class="mb-4">
               {{ state.data.startDate }} {{ state.data.startTime }} 開始
             </p>
-            <p class="mb-2">{{ state.data.description }}</p>
+            <p class="mb-2" style="white-space: pre-wrap">
+              {{ state.data.description }}
+            </p>
             <p class="mb-2"></p>
             <div class="text-center mt-10">
               <a
@@ -73,7 +75,11 @@
           .then((query) => {
             const data = query.data()
             console.log(data)
+            data.description = data.description.replace(/\\n/g, '\n')
+            console.log(data.description)
+            console.log(data.description.replace(/\\n/g, '\n'))
             state.data = data
+            console.log(state.data.description)
           })
           .catch(() => {
             alert('データの取得に失敗しました')
