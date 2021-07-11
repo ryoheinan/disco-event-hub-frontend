@@ -2,14 +2,36 @@
   <Header />
   <main class="content-bg">
     <div class="container mx-auto px-5">
-      <div class="card text-center rounded-lg p-5" :style="colorObj">
+      <div
+        v-if="state.data"
+        class="card text-center rounded-lg p-5"
+        :style="{
+          backgroundColor: colorSet[state.data.color].bg,
+          color: colorSet[state.data.color].text,
+        }"
+      >
         <div class="pb-10">
           <div class="flex justify-center mb-5">
-            <div class="emoji bg-white w-40 h-40 rounded-lg">👩‍💻</div>
+            <div class="emoji bg-white w-40 h-40 rounded-lg">
+              {{ state.data.emoji }}
+            </div>
           </div>
           <div class="flex flex-col">
-            <div class="text-5xl font-bold pb-1">Hello</div>
-            <div class="text-2xl pb-3">@{{ serverName }}</div>
+            <p class="text-4xl font-bold mb-1">{{ state.data.name }}</p>
+            <p class="text-2xl mb-1">@{{ state.data.serverName }}</p>
+            <p class="mb-4">
+              {{ state.data.startDate }} {{ state.data.startTime }} 開始
+            </p>
+            <p class="mb-2">{{ state.data.description }}</p>
+            <p class="mb-2"></p>
+            <div class="text-center mt-10">
+              <a
+                class="inline-block btn-join py-2 px-4 font-semibold rounded-lg"
+                :href="`https://discord.gg/${state.data.inviteUrl}`"
+                targe="_blank"
+                >サーバーにアクセスして<br />参加する</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -18,7 +40,10 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, reactive } from 'vue'
+  import { defineComponent, reactive, onMounted } from 'vue'
+  import { useRoute } from 'vue-router'
+  import firebase from 'firebase/app'
+  import 'firebase/firestore'
   import Header from '../components/Header.vue'
   export default defineComponent({
     name: 'Detail',
@@ -26,6 +51,7 @@
       Header,
     },
     setup: () => {
+      const route = useRoute()
       const colorSet = {
         blurple: { bg: '#5865F2', text: '#ffffff' },
         green: { bg: '#57F287', text: '#1A1A1A' },
@@ -33,17 +59,46 @@
         fuchsia: { bg: '#EB459E', text: '#ffffff' },
         red: { bg: '#ED4245', text: '#ffffff' },
       }
-      const colorObj = reactive({
-        backgroundColor: colorSet.blurple.bg,
-        color: colorSet.blurple.text,
+
+      const db = firebase.firestore()
+
+      const state = reactive({
+        data: null as any,
       })
-      return { colorObj }
+
+      const getData = async () => {
+        db.collection('events')
+          .doc(route.params.id as string)
+          .get()
+          .then((query) => {
+            const data = query.data()
+            console.log(data)
+            state.data = data
+          })
+          .catch(() => {
+            alert('データの取得に失敗しました')
+          })
+      }
+
+      onMounted(() => {
+        getData()
+      })
+
+      return { state, getData, colorSet }
     },
   })
 </script>
 
 <style scoped>
   .emoji {
-    font-size: 6rem;
+    font-size: 6.5rem;
+  }
+  .btn-join {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  .btn-join:hover,
+  .btn-join:active {
+    background-color: #3a3a3a;
   }
 </style>
