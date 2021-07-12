@@ -13,9 +13,10 @@
 <style>
   body {
     background-color: #2c2e31;
-    font-family: 'Helvetica Neue', Roboto, 'Segoe UI', Arial, 'Noto Sans JP',
-      'Noto Sans CJK JP', 'BIZ UDPGothic', '游ゴシック', 'YuGothic',
-      'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif !important;
+    font-family: 'Helvetica Neue', Roboto, 'Segoe UI', Arial,
+      'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP',
+      'BIZ UDPGothic', '游ゴシック', 'YuGothic', 'Hiragino Sans', Meiryo,
+      sans-serif !important;
     font-weight: 500;
   }
 </style>

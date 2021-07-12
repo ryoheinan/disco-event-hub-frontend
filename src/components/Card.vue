@@ -8,7 +8,18 @@
   >
     <div>
       <div class="flex justify-center py-4 px-8">
-        <div class="pt-3 bg-white text-6xl w-20 h-20 rounded-lg">
+        <div
+          class="
+            bg-white
+            text-6xl
+            w-20
+            h-20
+            flex
+            justify-center
+            items-center
+            rounded-lg
+          "
+        >
           {{ emoji }}
         </div>
       </div>

@@ -24,7 +24,15 @@
             </p>
             <div>
               <p
-                class="mb-2 px-3 py-4 inline-block bg-white rounded-lg"
+                class="
+                  mb-2
+                  px-3
+                  py-4
+                  inline-block
+                  bg-white
+                  rounded-lg
+                  description
+                "
                 style="white-space: pre-wrap"
               >
                 {{ state.data.description }}
@@ -114,5 +122,8 @@
   .btn-join:hover,
   .btn-join:active {
     background-color: #3a3a3a;
+  }
+  .description {
+    color: #1a1a1a;
   }
 </style>
