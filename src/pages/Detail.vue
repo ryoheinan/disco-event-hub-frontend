@@ -29,14 +29,14 @@
               <a
                 class="inline-block btn-join py-2 px-4 font-semibold rounded-lg"
                 :href="`https://discord.gg/${state.data.inviteUrl}`"
-                targe="_blank"
+                target="_blank"
                 >サーバーにアクセスして<br />参加する</a
               >
             </div>
             <div class="text-center">
               <a
                 class="inline-block w-20 h-20 mt-20"
-                :href="`https://twitter.com/share?url=https://disco-event-hub.web.app/detail/${$route.params.id}/&text=${state.data.name} - Disco Event Hub`"
+                :href="`https://twitter.com/share?url=https://disco-event-hub.web.app/detail/${$route.params.id}/&text=${state.data.name}に参加しよう！ - Disco Event Hub`"
                 rel="noopener noreferrer nofollow"
                 target="_blank"
                 ><img src="../assets/img/twitter.png"
