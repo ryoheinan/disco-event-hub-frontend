@@ -19,12 +19,17 @@
           <div class="flex flex-col">
             <p class="text-4xl font-bold mb-1">{{ state.data.name }}</p>
             <p class="text-2xl mb-1">@{{ state.data.serverName }}</p>
-            <p class="mb-4">
+            <p class="mb-4 font-bold">
               {{ state.data.startDate }} {{ state.data.startTime }} 開始
             </p>
-            <p class="mb-2" style="white-space: pre-wrap">
-              {{ state.data.description }}
-            </p>
+            <div>
+              <p
+                class="mb-2 px-3 py-4 inline-block bg-white rounded-lg"
+                style="white-space: pre-wrap"
+              >
+                {{ state.data.description }}
+              </p>
+            </div>
             <div class="text-center mt-10">
               <a
                 class="inline-block btn-join py-2 px-4 font-semibold rounded-lg"
