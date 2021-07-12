@@ -10,7 +10,7 @@
           color: colorSet[state.data.color].text,
         }"
       >
-        <div class="pb-10">
+        <div class="pb-5">
           <div class="flex justify-center mb-5">
             <div class="emoji bg-white w-40 h-40 rounded-lg">
               {{ state.data.emoji }}
@@ -25,7 +25,6 @@
             <p class="mb-2" style="white-space: pre-wrap">
               {{ state.data.description }}
             </p>
-            <p class="mb-2"></p>
             <div class="text-center mt-10">
               <a
                 class="inline-block btn-join py-2 px-4 font-semibold rounded-lg"
@@ -33,6 +32,15 @@
                 targe="_blank"
                 >サーバーにアクセスして<br />参加する</a
               >
+            </div>
+            <div class="text-center">
+              <a
+                class="inline-block w-20 h-20 mt-20"
+                :href="`https://twitter.com/share?url=https://disco-event-hub.web.app/detail/${$route.params.id}/&text=${state.data.name} - Disco Event Hub`"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+                ><img src="../assets/img/twitter.png"
+              /></a>
             </div>
           </div>
         </div>
@@ -74,12 +82,7 @@
           .get()
           .then((query) => {
             const data = query.data()
-            console.log(data)
-            data.description = data.description.replace(/\\n/g, '\n')
-            console.log(data.description)
-            console.log(data.description.replace(/\\n/g, '\n'))
             state.data = data
-            console.log(state.data.description)
           })
           .catch(() => {
             alert('データの取得に失敗しました')
