@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="flex flex-col">
-        <div class="text-4xl font-bold pb-1">{{ title }}</div>
+        <div class="text-3xl font-bold pb-1">{{ title }}</div>
         <div class="text-2xl mb-10">@{{ serverName }}</div>
         <div class="mb-6">
           <router-link
