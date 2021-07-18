@@ -1,1 +1,1 @@
-# discord-event-hub-web
+# discord-event-hub-frontend
